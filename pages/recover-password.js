@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic"
-const RecoverPasswordForm = dynamic(() => import("components/RecoverPasswordForm"), {
+const RecoverPasswordForm = dynamic(() => import("@/components/RecoverPasswordForm"), {
   ssr: false
 })
 

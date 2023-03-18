@@ -12,7 +12,7 @@ const RecoverPasswordForm = () => {
     };
     try {
       const res = await axios({
-        url: `${process.env.NEXT_PUBLIC_API_URL}/authentication/recover/password`,
+        url: `/api/authentication/recover/password`,
         method: "POST",
         headers: { "Content-Type": "application/json" },
         data: body,

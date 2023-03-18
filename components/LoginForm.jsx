@@ -24,7 +24,7 @@ export default function LoginForm() {
     e.preventDefault();
     try {
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_API_URL}/authentication/login`,
+        url: `/api/authentication/login`,
         method: "POST",
         headers: { "Content-Type": "application/json" },
         data: { username, password },

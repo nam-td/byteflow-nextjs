@@ -30,7 +30,7 @@ export default function NewPasswordForm(){
               token: token,
               password: password,
             };
-            const url = `${process.env.NEXT_PUBLIC_API_URL}/authentication/recover/password/${userId}/${token}`;
+            const url = `/api/authentication/recover/password/${userId}/${token}`;
             const res = await axios({
               url: url,
               method: "PUT",

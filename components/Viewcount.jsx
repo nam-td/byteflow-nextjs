@@ -9,7 +9,7 @@ export default function Viewcount() {
     async function updateViewcount(id) {
       try {
         const res = await axios.put(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts/viewcount/${id}`,
+          `/api/posts/viewcount/${id}`,
         );
         const data = await res.data;
         console.log(data);

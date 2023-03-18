@@ -12,7 +12,7 @@ export default function Reviews() {
     async function fetchPosts() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts/reviews`
+          `/api/posts/reviews`
         );
         const data = await res.data;
         setPosts(data.posts);
@@ -28,7 +28,7 @@ export default function Reviews() {
     async function fetchMorePosts() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts/reviews?page=${pageToLoad}`
+          `/api/posts/reviews?page=${pageToLoad}`
         );
         const data = await res.data;
         setPosts((posts) => [...posts, ...data.posts]);

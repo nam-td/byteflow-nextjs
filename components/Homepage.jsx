@@ -13,7 +13,7 @@ export default function Homepage() {
     async function fetchPosts() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts?page=1`
+          `/api/posts?page=1`
         );
         const data = await res.data;
         setPosts(data.posts);
@@ -29,7 +29,7 @@ export default function Homepage() {
     async function fetchMorePosts() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts?page=${pageToLoad}`
+          `/api/posts?page=${pageToLoad}`
         );
         const data = await res.data;
         setPosts((posts) => [...posts, ...data.posts]);

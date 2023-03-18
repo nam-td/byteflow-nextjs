@@ -73,7 +73,7 @@ export default function Dashboard() {
     if (email === "" && oldPwd !== "" && newPwd !== "") {
       try {
         const res = await axios({
-          url: `${process.env.NEXT_PUBLIC_API_URL}/authentication/accountsettings`,
+          url: `/api/authentication/accountsettings`,
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           data: { oldPwd, newPwd },
@@ -99,7 +99,7 @@ export default function Dashboard() {
     if (email !== "" && oldPwd === "" && newPwd === "") {
       try {
         const res = await axios({
-          url: `${process.env.NEXT_PUBLIC_API_URL}/authentication/accountsettings`,
+          url: `/api/authentication/accountsettings`,
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           data: { newEmail: email },
@@ -128,7 +128,7 @@ export default function Dashboard() {
     if (oldPwd !== "" && newPwd !== 0 && email !== "") {
       try {
         const res = await axios({
-          url: `${process.env.NEXT_PUBLIC_API_URL}/authentication/accountsettings`,
+          url: `/api/authentication/accountsettings`,
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           data: { newEmail: email, oldPwd, newPwd },
@@ -158,7 +158,7 @@ export default function Dashboard() {
   async function fetchIdentity() {
     try {
       const res = await axios({
-        url: `${process.env.NEXT_PUBLIC_API_URL}/authentication/profile`,
+        url: `/api/authentication/profile`,
         method: "GET",
         withCredentials: true,
       });
@@ -174,7 +174,7 @@ export default function Dashboard() {
   async function fetchPosts() {
     if (userInfo) {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/posts?page=1`
+        `/api/posts?page=1`
       );
       const data = await res.data;
       const posts = await data.posts;
@@ -186,7 +186,7 @@ export default function Dashboard() {
   async function refetchPosts() {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/posts?page=${pageToLoad}`
+        `/api/posts?page=${pageToLoad}`
       );
       const data = await res.data;
       setPosts(data.posts);
@@ -214,7 +214,7 @@ export default function Dashboard() {
         data.set("id", _id);
 
         const res = await axios({
-          url: `${process.env.NEXT_PUBLIC_API_URL}/posts/${_id}`,
+          url: `/api/posts/${_id}`,
           method: "DELETE",
           data: data,
           withCredentials: true,
@@ -222,7 +222,7 @@ export default function Dashboard() {
 
         if (res.statusText === "OK") {
           const res2 = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}/posts`
+            `/api/posts`
           );
           const data2 = await res2.data;
           const posts = data2.posts;

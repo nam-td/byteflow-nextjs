@@ -12,7 +12,7 @@ export default function Entertainment() {
     async function fetchPosts() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts/entertainment`
+          `/api/posts/entertainment`
         );
         const data = await res.data;
         setPosts(data.posts);
@@ -28,7 +28,7 @@ export default function Entertainment() {
     async function fetchMorePosts() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts/entertainment?page=${pageToLoad}`
+          `/api/posts/entertainment?page=${pageToLoad}`
         );
         const data = await res.data;
         setPosts((posts) => [...posts, ...data.posts]);

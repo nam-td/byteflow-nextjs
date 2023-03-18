@@ -14,7 +14,7 @@ export default function Search() {
   async function fetchPosts() {
     try {
       const res = await axios(
-        `${process.env.NEXT_PUBLIC_API_URL}/posts/search?q=${q}&page=${page}`
+        `/api/posts/search?q=${q}&page=${page}`
       );
       const data = await res.data;
       setPosts(data.posts);
@@ -26,7 +26,7 @@ export default function Search() {
   async function fetchMorePosts() {
     try {
       const res = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/posts/search?q=${q}&page=${pageToLoad}`
+        `/api/posts/search?q=${q}&page=${pageToLoad}`
       );
       const data = await res.data;
       setPosts((posts) => [...posts, ...data.posts]);

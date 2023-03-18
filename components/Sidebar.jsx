@@ -47,7 +47,7 @@ export default function Sidebar() {
     async function fetchMostViewedPosts() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts?sort=mostviewed`
+          `/api/posts?sort=mostviewed`
         );
         const data = await res.data;
         setPosts(data);

@@ -14,7 +14,7 @@ export default function ModifyPost({ postId, postAuthorId }) {
     async function fetchIdentity() {
       try {
         const res = await axios({
-          url: `${process.env.NEXT_PUBLIC_API_URL}/authentication/profile`,
+          url: `/api/authentication/profile`,
           method: "GET",
           withCredentials: true,
         });
@@ -35,7 +35,7 @@ export default function ModifyPost({ postId, postAuthorId }) {
     try {
       const response = await axios(    
         {
-          url: `${process.env.NEXT_PUBLIC_API_URL}/posts/${postId}`,
+          url: `/api/posts/${postId}`,
           method: "DELETE",
           data: data,
           withCredentials: true,

@@ -17,7 +17,7 @@ const Viewcount = dynamic(() => import("components/Viewcount"), {
 export async function fetchPost(id) {
   try {
     const res = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/posts/${id}`
+      `${process.env.API_URL}/posts/${id}`
     );
     const data = await res.data;
     return data;
@@ -29,7 +29,7 @@ export async function fetchPost(id) {
 export async function getStaticPaths() {
   let posts = [];
   try {
-    const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/posts`);
+    const res = await axios.get(`${process.env.API_URL}/posts`);
     const data = await res.data;
     posts = await data.posts;
   } catch (error) {

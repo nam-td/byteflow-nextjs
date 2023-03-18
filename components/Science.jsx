@@ -12,7 +12,7 @@ export default function Science() {
     async function fetchPosts() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts/science`
+          `/api/posts/science`
         );
         const data = await res.data;
         setPosts(data.posts);
@@ -28,7 +28,7 @@ export default function Science() {
     async function fetchMorePosts() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts/science?page=${pageToLoad}`
+          `/api/posts/science?page=${pageToLoad}`
         );
         const data = await res.data;
         setPosts((posts) => [...posts, ...data.posts]);

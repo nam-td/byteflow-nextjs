@@ -17,7 +17,7 @@ const Navbar = () => {
       try {
         const res = await axios(
           {
-            url:`${process.env.NEXT_PUBLIC_API_URL}/authentication/profile`,
+            url:`/api/authentication/profile`,
             method: "GET",
             withCredentials: true,
           }
@@ -41,7 +41,7 @@ const Navbar = () => {
   const logout = async () => {
     try {
       await axios({
-        url: `${process.env.NEXT_PUBLIC_API_URL}/authentication/logout`,
+        url: `/api/authentication/logout`,
         method: "POST",
         data: {},
         withCredentials: true,

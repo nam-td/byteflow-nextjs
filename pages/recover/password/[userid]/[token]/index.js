@@ -10,7 +10,7 @@ const verifyEmailUrl = async (userId, token) => {
       userId: userId,
       token: token,
     };
-    const url = `${process.env.API_URL}/authentication/recover/password/${userId}/${token}`;
+    const url = `/api/authentication/recover/password/${userId}/${token}`;
     const res = await axios({
       url,
       method: "POST",

@@ -14,7 +14,7 @@ const Post = ({
   return (
     <div className="post">
       <div className="image">
-        <Link href={`/post/${_id}`}>
+        <Link href={`/posts/${_id}`}>
           <Image
             src={
               `${process.env.NEXT_PUBLIC_API_URL}/` +
@@ -30,7 +30,7 @@ const Post = ({
       </div>
       <div className="texts">
         <h2>
-          <Link href={`/post/${_id}`}>{title}</Link>
+          <Link href={`/posts/${_id}`}>{title}</Link>
         </h2>
         <p className="info">
           <Link href="/" className="author user-display">

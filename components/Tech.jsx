@@ -12,7 +12,7 @@ export default function Tech() {
     async function fetchPosts() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts/tech`
+          `/api/posts/tech`
         );
         const data = await res.data;
         setPosts(data.posts);
@@ -28,7 +28,7 @@ export default function Tech() {
     async function fetchMorePosts() {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/posts/tech?page=${pageToLoad}`
+          `/api/posts/tech?page=${pageToLoad}`
         );
         const data = await res.data;
         setPosts((posts) => [...posts, ...data.posts]);

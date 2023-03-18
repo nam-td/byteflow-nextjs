@@ -12,7 +12,7 @@ const RecoverUsernameForm = () => {
     };
     try {
       const res = await axios({
-        url: `${process.env.NEXT_PUBLIC_API_URL}/authentication/recover/username`,
+        url: `/api/authentication/recover/username`,
         method: "POST",
         headers: { "Content-Type": "application/json" },
         data: body,

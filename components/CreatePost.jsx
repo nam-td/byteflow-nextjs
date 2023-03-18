@@ -30,7 +30,7 @@ export default function CreatePost() {
     e.preventDefault();
     try {
       const response = await axios({
-        url: `${process.env.NEXT_PUBLIC_API_URL}/posts`,
+        url: `/api/posts`,
         method: "POST",
         data: data,
         withCredentials: true,

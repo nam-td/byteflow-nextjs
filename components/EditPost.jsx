@@ -17,7 +17,7 @@ export default function EditPost() {
       async function fetchPost(id) {
         try {
           const res = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}/posts/` + id
+            `/api/posts/` + id
           );
           const postInfo = await res.data;
           setTitle(postInfo.title);
@@ -52,7 +52,7 @@ export default function EditPost() {
       }
       try {
         const response = await axios({
-          url: `${process.env.NEXT_PUBLIC_API_URL}/posts`,
+          url: `/api/posts`,
           method: "PUT",
           data: data,
           withCredentials: true,

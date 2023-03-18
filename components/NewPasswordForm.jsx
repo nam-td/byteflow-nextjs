@@ -2,12 +2,14 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-export default function NewPasswordForm({userId, token}){
+export default function NewPasswordForm(){
     const [password, setPassword] = useState("");
     const [helper, setHelper] = useState("");
     const [redirect, setRedirect] = useState(false);
     const router = useRouter();
-
+    const userId = router.query.userid;
+    const token = router.query.token;
+    
     const passwordValidate = (e) => {
         const passwordInput = e.target.value;
         if (passwordInput.length >= 8 && passwordInput.length <= 20) {

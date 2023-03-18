@@ -1,5 +1,8 @@
-import NewPasswordForm from "./NewPasswordForm";
 import axios from "axios";
+import dynamic from "next/dynamic";
+const NewPasswordForm = dynamic(() => import("components/NewPasswordForm"), {
+  ssr: false
+});
 
 const verifyEmailUrl = async (userId, token) => {
   try {
@@ -16,37 +19,38 @@ const verifyEmailUrl = async (userId, token) => {
       },
       data: body,
     });
-    const data = await res.data;
-    const msg = await data.msg;
-
+    
     if (res.status === 200) {
+      const data = await res.data;
+      const msg = await data.msg;
       const validUrl = true;
       const message = msg;
       return { validUrl, message };
-    } else {
-      const validUrl = false;
-      const message = msg;
-      return { validUrl, message };
     }
+
   } catch (err) {
     console.log(err);
+    const data = await err.response.data;
     const validUrl = false;
-    const message = "Invalid Link";
+    const message = data.msg;
     return { validUrl, message };
   }
 };
+
 export async function getServerSideProps({ params }) {
   const { userid, token } = params;
+  console.log(userid);
+  console.log(token);
   const data = await verifyEmailUrl(userid, token);
   const { validUrl, message } = data;
 
-  return { props: { validUrl, message, userid, token } };
+  return { props: { validUrl, message } };
 }
-const ChangePassword = ({ validUrl, message, userid, token }) => {
+const ChangePassword = ({ validUrl, message }) => {
   return (
     <div className="v-container">
       {validUrl ? (
-        <NewPasswordForm userId={userid} token={token} />
+        <NewPasswordForm />
       ) : (
         <h1>{message}</h1>
       )}

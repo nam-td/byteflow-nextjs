@@ -1,10 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { format } from "date-fns";
-import Sidebar from "components/Sidebar";
-import ModifyPost from "components/ModifyPost";
-import Viewcount from "@/components/Viewcount";
 const axios = require("axios");
+import dynamic from "next/dynamic"
+
+const ModifyPost = dynamic(() => import("components/ModifyPost"), {
+  ssr: false
+})
+const Sidebar = dynamic(() => import("components/Sidebar"), {
+  ssr: false
+})
+const Viewcount = dynamic(() => import("components/Viewcount"), {
+  ssr: false
+})
 
 export async function fetchPost(id) {
   try {

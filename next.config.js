@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: false,
   },
   images: {
-    domains: [`${process.env.API_URL}`]
+    domains: [`${process.env.IMG_URL}`]
   },
   async rewrites() {
     return [
